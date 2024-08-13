@@ -18,8 +18,6 @@ namespace WeatherApi.Services
 
         public async Task<WeatherForecast> GetForecastByCoordinatesAsync(double latitude, double longitude)
         {
-            longitude = -97.0892; latitude = 39.7456;
-
             if (latitude == 0 || longitude == 0)
                 throw new ApplicationException("Invalid coordinates");
 
@@ -30,7 +28,7 @@ namespace WeatherApi.Services
             var apiUri = string.Format(uri, latitude, longitude);
             _httpClient.DefaultRequestHeaders.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/geo+json"));
-            _httpClient.DefaultRequestHeaders.UserAgent.TryParseAdd("(peterfuerte@hotmail.com)");
+            _httpClient.DefaultRequestHeaders.UserAgent.TryParseAdd("(pedro-abacaxi@outlook.com)");
 
             var httpResponseMessage = await _httpClient.GetAsync(apiUri);
 
@@ -62,7 +60,7 @@ namespace WeatherApi.Services
                             City = city,
                             State = state,
                             ShortForecast = forecastNow.First().shortForecast,
-                            Temperature = forecastNow.First().temperature
+                            TemperatureF = forecastNow.First().temperature
                         };
                         return r;
                     }

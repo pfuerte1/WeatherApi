@@ -7,11 +7,6 @@ namespace WeatherApi.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly WeatherForecastService _weatherForecastService;
 
@@ -21,7 +16,7 @@ namespace WeatherApi.Controllers
             _weatherForecastService = weatherForecastService;
         }
 
-        [HttpGet("GetByCoodinates")]
+        [HttpGet("GetByCoordinates")]
         public async Task<IActionResult> GetWeatherForecastByCoodinatesAsync(double latitude, double longitude)
         {
             var result = await _weatherForecastService.GetForecastByCoordinatesAsync(latitude, longitude);

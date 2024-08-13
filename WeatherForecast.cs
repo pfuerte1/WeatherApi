@@ -7,15 +7,21 @@ namespace WeatherApi
         public string? City { get; set; }
         public string? State { get; set; }
 
-        public int Temperature;
-
+        public int TemperatureF;
+        public string Temperature
+        {
+            get
+            {
+                return TemperatureF + "F";
+            }
+        }
         public string? ShortForecast { get; set; }
         public string FeelsLike
         {
             get
             {
                 string feelsLike = "";
-                switch (Temperature)
+                switch (TemperatureF)
                 {
                     case <= 32:
                         feelsLike = "Freezing";
