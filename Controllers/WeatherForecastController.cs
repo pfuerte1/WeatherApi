@@ -16,7 +16,7 @@ namespace WeatherApi.Controllers
             _weatherForecastService = weatherForecastService;
         }
 
-        [HttpGet("coordinates/{latitude}/{longitude}")]
+        [HttpGet("coordinates/{latitude},{longitude}")]
         public async Task<IActionResult> GetWeatherForecastByCoodinatesAsync(double latitude, double longitude)
         {
             var result = await _weatherForecastService.GetForecastByCoordinatesAsync(latitude, longitude);
